@@ -1,0 +1,31 @@
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;//Update: to set heigt dynamically to leave room for footer
+  margin-bottom: 4rem;
+}
+
+.logo {
+  margin: 1rem 0;
+}
+.nyt-logo {
+  max-width: 215px;
+  // max-height: 250px;
+  margin: 0 2rem;
+}
+
+.searchForm {
+  p {
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+  select {
+    font-weight: 400;
+    font-size: 1.15rem;
+  }
+
+}
+

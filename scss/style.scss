@@ -1,10 +1,10 @@
 // Imported but not included in the the stylesheet
-@import 'variables';
-@import 'mixins';
+@import 'variable';
+@import 'mixin';
 
 // Compiled in the stylesheet
 @import 'reset';
-@import 'fonts';
+@import 'font';
 @import 'global';
 @import 'header';
 @import 'content';
