@@ -1,17 +1,20 @@
 footer {
-  display: flex;
-  justify-content: center;
-  height: $footer-height; //fix this work dynamically with content changes
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: $footer-height;
+  width: 100%;
   background: $site-background-color;
-  
-  .upper {
-    text-transform: uppercase;
-  }
 
   p {
+    color: $footer-text-color;
+    text-align: center;
     font-family: $base-font-family;
     font-weight: $base-font-weight;
-    font-size: 0.8rem;
-    color: $footer-text-color;
+    font-size: 0.9rem;
+  }
+
+  p span {
+    text-transform: uppercase;
   }
 }

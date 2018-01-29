@@ -1,3 +1,5 @@
+
+
 body {
   max-width: $max-width;
   font-family: $base-font-family;
@@ -5,6 +7,12 @@ body {
   font-size: $base-font-size;
   color: $base-font-color;
   background: $site-background-color;
+  margin: 0 auto;
+}
+
+* {
+  box-sizing: border-box;
+  transition: all 2s ease;
 }
 
 img {

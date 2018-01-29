@@ -1,31 +1,43 @@
-header {
+.site-header {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 90vh;//Update: to set heigt dynamically to leave room for footer
-  margin-bottom: 4rem;
+  height: calc( 100vh - #{$footer-height} );
+  padding: 2rem 2rem 3rem;
+  background: $site-background-color;
+  transition: all 2s ease;
+
+  // &__logo-wrapper {
+  //   margin: 1rem 0;
+  // }
+
+  &__logo {
+    margin: 0 2rem 1rem;
+
+    &__results-loaded {
+      @extend .site-header__logo;
+      height: 150px;
+    }
+  }
 }
 
-.logo {
-  margin: 1rem 0;
-}
-.nyt-logo {
-  max-width: 215px;
-  // max-height: 250px;
-  margin: 0 2rem;
-}
 
-.searchForm {
-  p {
+
+.search-form {
+  &__title {
     margin-bottom: 1rem;
     font-size: 0.8rem;
     text-align: center;
   }
-  select {
+  &__search-box-text {
     font-weight: 400;
     font-size: 1.15rem;
   }
-
+  &__loading-animation {
+    display: none;
+    height: 100px;
+    width: 100px;
+    margin: 4rem auto 0;
+  }
 }
-
