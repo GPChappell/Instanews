@@ -9,7 +9,6 @@ var autoprefixer = require('gulp-autoprefixer');
 var cssnano = require('gulp-cssnano');
 var prettyError = require('gulp-prettyerror');
 
-
 //Gulp task for Sass
 gulp.task('sass', function() {
   return gulp.src('./scss/style.scss')
@@ -34,8 +33,6 @@ gulp.task('lint', function() {
       .pipe(eslint.failAfterError())
 });
 
-
-
 //Lint & Minify js files
 gulp.task('minify-js', gulp.series('lint', function(e) {  
   return gulp.src('./js/*.js')
@@ -44,22 +41,11 @@ gulp.task('minify-js', gulp.series('lint', function(e) {
     .pipe( gulp.dest('./build/js')); //move processed files to build folder
 }));
 
-// //Minify css files
-// gulp.task('minify-css', function(e) {  
-//   return gulp.src('./css/*.css')
-//     .pipe(uglifycss()) //call uglify function on files
-//     .pipe(rename({extname: '.min.css'})) //rename the uglified files
-//     .pipe( gulp.dest('./build/css')); //move processed files to build folder
-// });
-
 //Uglify CSS, JS files on change
 gulp.task('watch', function() {
   gulp.watch('js/*.js', gulp.series('minify-js'));
   gulp.watch('scss/*.scss', gulp.series('sass'));
 });
-
-
-
 
 // Browser sync, reload on html, css, js change
 gulp.task('browser-sync', function() {
