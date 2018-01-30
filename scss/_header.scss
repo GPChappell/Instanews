@@ -7,28 +7,52 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
   height: calc( 100vh - #{$footer-height} );
   padding: 2rem 2rem 3rem;
-  
   background: $site-background-color;
+  transition: 0.5s;
+
+  @include tablet {
+    flex-direction: row;
+    padding-bottom: 2rem;
+  }
+  @include desktop {
+    justify-content: flex-start;
+  }
+
+  &.results-loaded{
+    @include tablet {
+      justify-content: flex-start;
+    }
+  }
 
   &__logo {
     margin: 0 2rem 1rem;
+    transition: margin-left 0.5s;
 
-    &__results-loaded {
-      @extend .site-header__logo;
+    &.results-loaded {
       height: 150px;
+      
+      @include tablet {
+        height: 70px;
+        width: 70px;
+        margin: 0 5rem 0;
+      }
+      @include desktop {
+        margin-left: 1rem;
+      }
     }
   }
 }
 
 
 .search-form {
+
   &__title {
     margin-bottom: 1rem;
     font-size: 0.8rem;
     text-align: center;
+    // transition: 0.5s;
   }
   &__search-box-text {
     font-weight: 400;
@@ -39,5 +63,10 @@
     height: 100px;
     width: 100px;
     margin: 4rem auto 0;
+  }
+  &.results-loaded {
+    @include tablet {
+      align-self: flex-start;
+    }
   }
 }
