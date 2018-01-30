@@ -1,6 +1,6 @@
 # Instanews | Top Stories from The New York Times
 
-![alt text](https://raw.gpchappell.com/gpchappell/Instanews_project/Instanews.PNG)
+[[https://github.com/GPChappell/Instanews_project/blob/bdba5817e03120da1aef47032d20c9b2de74aa98/Instanews.PNG]]
 
 Newsreader web app developed in HTML5<br> CSS3<br> jQuery and AJAX.<br>
 This is a portfolio project piece developed for the Web Development Professional course I am completing at RED Academy Vancouver in Q1 2018. This web app retrieves top stories published by The New York Times from a range of topics including technology<br> business<br> sports and fashion.<br>
