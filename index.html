@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./build/css/style.min.css">
-  <title>Instanews</title>
+  <title>Instanews | Top Stories from The New York Times </title>
 </head>
 <body>
   <!-- HEADER -->
   <header class="site-header">
       <img id="siteHeaderLogo" class="site-header__logo" src="./image/nyt-logo.svg" alt="New York Times Logo"/>
+      <h1 class="page-heading">Top Stories from The New York Times</h1>
     <!-- Search Form -->
     <div class="search-form">
       <p class="search-form__title">Choose a section:</p>
@@ -28,10 +29,11 @@
     </div>
   </header>
   <!-- MAIN CONTENT -->
-  <section id="searchResults" class="main-content">
-      <img class="main-content__loading-animation" src="./image/ajax-loader.gif" />
+  <section id="searchResults" class="story-grid">
+      <img class="story-grid__loading-animation" src="./image/ajax-loader.gif" />
     <!-- SEARCH RESULTS ARE DYNAMICALLY INSERTED HERE -->
   </section>
+  <!-- FOOTER -->
   <footer>
     <div>
       <p>&COPY; Copyright 2018 <span>Instanews</span></p>

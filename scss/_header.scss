@@ -1,16 +1,17 @@
+.page-heading {
+  display: none;
+}
+
 .site-header {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
   height: calc( 100vh - #{$footer-height} );
   padding: 2rem 2rem 3rem;
+  
   background: $site-background-color;
-  transition: all 2s ease;
-
-  // &__logo-wrapper {
-  //   margin: 1rem 0;
-  // }
 
   &__logo {
     margin: 0 2rem 1rem;
@@ -21,7 +22,6 @@
     }
   }
 }
-
 
 
 .search-form {
