@@ -2,9 +2,9 @@
 
 ![alt text](https://raw.gpchappell.com/gpchappell/Instanews_project/Instanews.PNG)
 
-Newsreader web app developed in HTML5<br> CSS3<br> jQuery and AJAX.<br>
-This is a portfolio project piece developed for the Web Development Professional course I am completing at RED Academy Vancouver in Q1 2018. This web app retrieves top stories published by The New York Times from a range of topics including technology<br> business<br> sports and fashion.<br>
-Stories are retrieved via AJAX call to the New York Times API and displayed in grid layout providing images<br> headlines and links to source content.
+Newsreader web app developed in HTML5, CSS3, jQuery and AJAX.<br>
+This is a portfolio project piece developed for the Web Development Professional course I am completing at RED Academy Vancouver in Q1 2018. This web app retrieves top stories published by The New York Times from a range of topics including technology, business, sports and fashion.<br>
+Stories are retrieved via AJAX call to the New York Times API and displayed in grid layout providing images, headlines and links to source content.
 
 # Technologies Used & Key Learnings
 
@@ -34,10 +34,10 @@ GULP<br>
   Fundamentals of SASS including: nesting, variables, partials, mixins, mixins for smarter @media queries and interpolation.<br>
 
 ## jQuery & AJAX:
-  Fundamentals of using jQuery to traverse and manipulate the DOM
-  Fundamentals of jQuery .ajax() method to retrieve data via API
-  How to use the jQuery .each() method to access data returned in JSON
-  How to inspect JSON object to construct and insert elements into the DOM
+  Fundamentals of using jQuery to traverse and manipulate the DOM<br>
+  Fundamentals of jQuery .ajax() method to retrieve data via API<br>
+  How to use the jQuery .each() method to access data returned in JSON<br>
+  How to inspect JSON object to construct and insert elements into the DOM<br>
 
 ## General:
   Minification of files to promote better loading performance.<br>
@@ -53,26 +53,26 @@ CSS3 Valid: https://jigsaw.w3.org/css-validator/validator<br>
 ## Tested:
 
 ### PC Desktop:
-Working:
-    Chrome
-    Opera
+Working:<br>
+    Chrome<br>
+    Opera<br>
 
-Not Working:
-    Firefox (content not scaled correctly in single column view)
-    Internet Explorer (content not visible in single column view)
+Not Working:<br>
+    Firefox (content not scaled correctly in single column view)<br>
+    Internet Explorer (content not visible in single column view)<br>
 
 ### Apple Desktop:
-Working:
-  Chrome
-  Safari
+Working:<br>
+  Chrome<br>
+  Safari<br>
     
 
 ### Mobile:
-Working:
-    Android (Chrome)
+Working:<br>
+    Android (Chrome)<br>
 
-Not Working:
-    iOS (Safari) (content not visible in single column view)
+Not Working:<br>
+    iOS (Safari) (content not visible in single column view)<br>
 
 # Author
 
