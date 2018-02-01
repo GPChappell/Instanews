@@ -12,6 +12,11 @@ footer {
     font-family: $base-font-family;
     font-weight: $base-font-weight;
     font-size: 0.9rem;
+
+    @include desktop {
+      text-align: left;
+      margin-left: 5%;
+    }
   }
   p span {
     text-transform: uppercase;
