@@ -8,8 +8,19 @@ var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var cssnano = require('gulp-cssnano');
 var prettyError = require('gulp-prettyerror');
+var babel = require('gulp-babel');
 
-//Gulp task for Sass
+//Babel Task
+var input = './js/*.js';
+var output = './js/transpiled'
+
+gulp.task('babel', function() {
+  return gulp.src(input)
+  .pipe(babel())
+  .pipe(gulp.dest(output))
+});
+
+//Sass Task
 gulp.task('sass', function() {
   return gulp.src('./scss/style.scss')
   .pipe(sass())
@@ -27,15 +38,15 @@ gulp.task('sass', function() {
 
 //Gulp Lint
 gulp.task('lint', function() {
-  return gulp.src(['./js/*.js'])
+  return gulp.src(['./js/transpiled/*.js'])
       .pipe(eslint())
       .pipe(eslint.format())
       .pipe(eslint.failAfterError())
 });
 
 //Lint & Minify js files
-gulp.task('minify-js', gulp.series('lint', function(e) {  
-  return gulp.src('./js/*.js')
+gulp.task('minify-js', gulp.series('lint', function() {  
+  return gulp.src('./js/transpiled/*.js')
     .pipe(uglify()) //call uglify function on files
     .pipe(rename({extname: '.min.js'})) //rename the uglified files
     .pipe( gulp.dest('./build/js')); //move processed files to build folder
@@ -43,11 +54,11 @@ gulp.task('minify-js', gulp.series('lint', function(e) {
 
 //Uglify CSS, JS files on change
 gulp.task('watch', function() {
-  gulp.watch('js/*.js', gulp.series('minify-js'));
+  gulp.watch('js/*.js', gulp.series('babel','minify-js'));
   gulp.watch('scss/*.scss', gulp.series('sass'));
 });
 
-// Browser sync, reload on html, css, js change
+// Browser sync, reload on HMTL, CSS, JS change
 gulp.task('browser-sync', function() {
 
   browserSync.init({
