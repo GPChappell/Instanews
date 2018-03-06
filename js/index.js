@@ -19,11 +19,13 @@ $(document).ready( () => {
     $( '.story-grid__loading-animation' ).show(); //Show loading GIF
 
     //Build API query string based on news topic selected by user
-    let searchSelection = $(this).val().toLowerCase();
+    let searchSelection = $('#sectionDropdown').val().toLowerCase();
     let searchURL = url + searchSelection + '.json' 
     searchURL += '?' + $.param({
       'api-key': apiKey
     });
+
+    
     
     //AJAX call to New York Times API
     $.ajax({
@@ -49,7 +51,7 @@ $(document).ready( () => {
         if( value.multimedia[4] === undefined ){  
           return true;
         }
-        
+
         //Read in story components from AJAX results
         let articleImage = value.multimedia[4].url,
           articleURL = value.url,

@@ -20,7 +20,7 @@ $(document).ready(function () {
     $('.story-grid__loading-animation').show(); //Show loading GIF
 
     //Build API query string based on news topic selected by user
-    var searchSelection = $(undefined).val().toLowerCase();
+    var searchSelection = $('#sectionDropdown').val().toLowerCase();
     var searchURL = url + searchSelection + '.json';
     searchURL += '?' + $.param({
       'api-key': apiKey
