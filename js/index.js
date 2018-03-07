@@ -28,8 +28,6 @@ $(document).ready( () => {
     searchURL += '?' + $.param({
       'api-key': apiKey
     });
-
-    
     
     //AJAX call to New York Times API
     $.ajax({
@@ -62,7 +60,6 @@ $(document).ready( () => {
           articleURL = value.url,
           articleTitle = value.abstract;
 
-
         //Build html element for story
         var searchResult = '';
         searchResult = `<article class="story">`;
@@ -70,14 +67,6 @@ $(document).ready( () => {
         searchResult += `<img src='${articleImage}' alt='${imageCaption}'/>`;
         searchResult += `<p>${articleTitle}</p>`;
         searchResult += `</article>`;
-
-        //Build html element for story
-        // var searchResult = '';
-        // searchResult = `<article class="story" style="background: url('${articleImage}')`;
-        // searchResult += ` center top / auto 100% no-repeat; ">`;
-        // searchResult += `<a href="${articleURL}" target="_blank">`;
-        // searchResult += `<p>${articleTitle}</p>`;
-        // searchResult += `</article>`;
 
         //Add story element to document
         $( '#searchResults' ).append( searchResult ); 

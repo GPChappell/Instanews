@@ -9,7 +9,12 @@ footer {
   width: 100%;
   background: $site-background-color;
 
+  @include desktop {
+    justify-content: flex-start;
+  }
+
   p {
+    padding-left: 2rem;
     color: $footer-text-color;
     text-align: center;
     font-family: $base-font-family;

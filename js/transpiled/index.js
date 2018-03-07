@@ -68,14 +68,6 @@ $(document).ready(function () {
         searchResult += '<p>' + articleTitle + '</p>';
         searchResult += '</article>';
 
-        //Build html element for story
-        // var searchResult = '';
-        // searchResult = `<article class="story" style="background: url('${articleImage}')`;
-        // searchResult += ` center top / auto 100% no-repeat; ">`;
-        // searchResult += `<a href="${articleURL}" target="_blank">`;
-        // searchResult += `<p>${articleTitle}</p>`;
-        // searchResult += `</article>`;
-
         //Add story element to document
         $('#searchResults').append(searchResult);
 
