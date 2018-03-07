@@ -235,15 +235,21 @@ a {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    position: relative;
     -webkit-box-align: end;
         -ms-flex-align: end;
             align-items: flex-end;
     height: 100%;
     width: 100%; }
+  .story img {
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: top center;
+       object-position: top center; }
   .story p {
-    opacity: 0;
-    -webkit-transform: translateY(40px);
-            transform: translateY(40px);
+    position: absolute;
+    top: 100%;
     width: 100%;
     height: 40%;
     padding: 0.5rem;
@@ -251,13 +257,22 @@ a {
     color: white;
     line-height: 1.5;
     -webkit-transition: 0.5s;
-    transition: 0.5s; }
+    transition: 0.5s;
+    opacity: 0; }
   .story:hover p {
     opacity: 1;
-    -webkit-transform: translateY(0);
-            transform: translateY(0); }
+    top: 60%; }
 
 footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -284,30 +299,30 @@ footer {
   width: 100%; }
 
 .selectric {
-  border-radius: 6px;
-  background: #9e8ff1;
+  border-radius: 1px;
+  background: #9b1818;
   position: relative; }
   .selectric .label {
     display: block;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin: 0 38px 0 10px;
-    font-size: 12px;
-    line-height: 38px;
+    margin: 0 28px 0 10px;
+    font-size: 1rem;
+    line-height: 28px;
     color: #FFF;
-    height: 38px; }
+    height: 28px; }
   .selectric .button {
     display: block;
     position: absolute;
     right: 0;
     top: 0;
-    width: 38px;
-    height: 38px;
-    color: #FFF;
+    width: 28px;
+    height: 28px;
+    color: #cf8383;
     text-align: center;
     font: 0/0 a;
-    *font: 20px/38px Lucida Sans Unicode, Arial Unicode MS, Arial; }
+    *font: 20px/28px Lucida Sans Unicode, Arial Unicode MS, Arial; }
     .selectric .button:after {
       content: " ";
       position: absolute;
@@ -319,18 +334,18 @@ footer {
       width: 0;
       height: 0;
       border: 4px solid transparent;
-      border-top-color: #FFF;
+      border-top-color: #cf8383;
       border-bottom: none; }
 
 .selectric-focus .selectric {
-  background: #7762eb; }
+  background: #6f1111; }
 
 .selectric-hover .selectric {
-  background: #8a78ee; }
+  background: #851515; }
   .selectric-hover .selectric .button {
-    color: #e6e6e6; }
+    color: #c15e5e; }
     .selectric-hover .selectric .button:after {
-      border-top-color: #e6e6e6; }
+      border-top-color: #c15e5e; }
 
 .selectric-open {
   z-index: 9999; }
@@ -398,7 +413,7 @@ footer {
   position: absolute;
   top: 100%;
   left: 0;
-  background: #9e8ff1;
+  background: #9b1818;
   border: 1px solid #c4c4c4;
   z-index: -1;
   -webkit-box-shadow: 0 0 10px -6px;
@@ -413,7 +428,7 @@ footer {
     list-style: none;
     padding: 0;
     margin: 0;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 20px;
     min-height: 20px; }
   .selectric-items li {
@@ -422,13 +437,13 @@ footer {
     color: #FFF;
     cursor: pointer; }
     .selectric-items li.selected {
-      background: #b1a5f4;
+      background: #af4646;
       color: #FFF; }
     .selectric-items li.highlighted {
-      background: #a89af2;
+      background: #a52f2f;
       color: #FFF; }
     .selectric-items li:hover {
-      background: #bbb1f5;
+      background: #b95d5d;
       color: #FFF; }
   .selectric-items .disabled {
     filter: alpha(opacity=50);

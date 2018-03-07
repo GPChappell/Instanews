@@ -37,14 +37,22 @@
 
   a {
     display: flex;
+    position: relative;
     align-items: flex-end;
     height: 100%;
     width: 100%;
   }
 
+  img {
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
   p {
-    opacity: 0;
-    transform: translateY(40px);
+    // transform: translateY(40px);
+    position: absolute;
+    top: 100%;
     width: 100%;
     height: 40%;
     padding: 0.5rem;
@@ -52,10 +60,12 @@
     color: white;
     line-height: 1.5;
     transition: 0.5s;
+    opacity: 0;
   }
 
   &:hover p {
     opacity: 1;
-    transform: translateY(0);
+    top: 60%;
+    // transform: translateY(0);
   }
 }

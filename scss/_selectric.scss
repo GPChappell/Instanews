@@ -2,10 +2,10 @@
   Selectric
 ======================================*/
 $main-color     : #DDD;
-$secondary-color: #FFF;
-$bg-color       : rgb(158, 143, 241);
+$secondary-color: rgb(207, 131, 131);
+$bg-color       : rgb(155, 24, 24);
 $text-color     : #FFF;
-$height         : 40px;
+$height         : 30px;
 $spacing        : 10px;
 $border-width   : 1px;
 $inner-height   : $height - ($border-width * 2);
@@ -20,7 +20,7 @@ $inner-height   : $height - ($border-width * 2);
 }
 
 .selectric {
-  border-radius: 6px;
+  border-radius: 1px;
   background: $bg-color;
   position: relative;
 
@@ -30,7 +30,7 @@ $inner-height   : $height - ($border-width * 2);
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0 $inner-height 0 $spacing;
-    font-size: 12px;
+    font-size: 1rem;
     line-height: $inner-height;
     color: $text-color;
     height: $inner-height;
@@ -175,7 +175,7 @@ $inner-height   : $height - ($border-width * 2);
     list-style: none;
     padding: 0;
     margin: 0;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 20px;
     min-height: 20px;
   }

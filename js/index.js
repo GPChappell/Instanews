@@ -10,7 +10,6 @@ $(document).ready( () => {
   //Initialise Selectric plugin
   $('select').selectric();
 
-
   //Retrieve NYT top stories
   $('#sectionDropdown').on('change', () => { //When user chooses a news topic
     
@@ -59,16 +58,26 @@ $(document).ready( () => {
 
         //Read in story components from AJAX results
         let articleImage = value.multimedia[4].url,
+          imageCaption = value.multimedia[4].caption,
           articleURL = value.url,
           articleTitle = value.abstract;
 
+
         //Build html element for story
         var searchResult = '';
-        searchResult = `<article class="story" style="background: url('${articleImage}')`;
-        searchResult += ` center top / auto 100% no-repeat; ">`;
-        searchResult += `<a href="${articleURL}" target="_blank">`;
+        searchResult = `<article class="story">`;
+        searchResult += `<a href='${articleURL}' target='_blank'>`;        
+        searchResult += `<img src='${articleImage}' alt='${imageCaption}'/>`;
         searchResult += `<p>${articleTitle}</p>`;
         searchResult += `</article>`;
+
+        //Build html element for story
+        // var searchResult = '';
+        // searchResult = `<article class="story" style="background: url('${articleImage}')`;
+        // searchResult += ` center top / auto 100% no-repeat; ">`;
+        // searchResult += `<a href="${articleURL}" target="_blank">`;
+        // searchResult += `<p>${articleTitle}</p>`;
+        // searchResult += `</article>`;
 
         //Add story element to document
         $( '#searchResults' ).append( searchResult ); 
