@@ -4,9 +4,13 @@ var url = 'https://api.nytimes.com/svc/topstories/v2/';
 var apiKey = '9ef02a0589784f0db09a4dd1cbaea8ab';
 var numberStories = 12; //Number of stories to display
 
-//Retrieve NYT top stories
+
 $(document).ready(function () {
 
+  //Initialise Selectric plugin
+  $('select').selectric();
+
+  //Retrieve NYT top stories
   $('#sectionDropdown').on('change', function () {
     //When user chooses a news topic
 
