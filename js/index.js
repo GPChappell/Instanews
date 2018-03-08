@@ -4,16 +4,16 @@ const url = 'https://api.nytimes.com/svc/topstories/v2/';
 const apiKey = '9ef02a0589784f0db09a4dd1cbaea8ab';
 const numberStories = 12;  //Number of stories to display
 
-
 $(document).ready( () => {
 
   //Initialise Selectric plugin
   $('select').selectric();
 
   //Retrieve NYT top stories
+
   $('#sectionDropdown').on('change', () => { //When user chooses a news topic
     
-    //Update site header format when results are loaded
+    //Update page elements when articles are requested
     $( '.site-header' ).css( 'height', 'auto' ); 
     $( '.site-header' ).addClass( 'results-loaded' );
     $( '#siteHeaderLogo' ).addClass( 'results-loaded' );
@@ -23,9 +23,9 @@ $(document).ready( () => {
     $( 'footer' ).css( 'position', 'absolute' );
     $( '.loading-animation' ).show(); //Show loading GIF
 
-    //Build API query string based on news topic selected by user
+    //Build API query string
     let searchSelection = $('#sectionDropdown').val().toLowerCase();
-    let searchURL = url + searchSelection + '.json' 
+    let searchURL = url + searchSelection + '.json' //Read in topic selected by user
     searchURL += '?' + $.param({
       'api-key': apiKey
     });
@@ -35,25 +35,15 @@ $(document).ready( () => {
       url: searchURL,
       method: 'GET',
     })
-    .done( ( data ) => {
-
-      // $( '.loading-animation' ).hide();  //Hide loading GIF
+    .done( ( data ) => {      
       
-      //Process news stories (AJAX data)
-      let results = data.results;
-      let resultCounter = 0;
+      //Limit results to 12 articles with image
+      let results = data.results
+                      .filter( val => val.multimedia[4] != undefined ) //Check article image is present
+                      .slice(0, 12);
 
       //Create a html element for  news story
       $.each(results, ( key, value ) => {
-        
-        //Only display specified number of stories
-        if( resultCounter === numberStories ) {  
-          return false;
-        }
-        //Skip loading of story if image is missing
-        if( value.multimedia[4] === undefined ){  
-          return true;
-        }
 
         //Read in story components from AJAX results
         let articleImage = value.multimedia[4].url,
@@ -61,7 +51,7 @@ $(document).ready( () => {
           articleURL = value.url,
           articleTitle = value.abstract;
 
-        //Build html element for story
+        //Create element for story
         var searchResult = '';
         searchResult = `<article class="story results-loading">`;
         searchResult += `<a href='${articleURL}' target='_blank'>`;        
@@ -69,9 +59,9 @@ $(document).ready( () => {
         searchResult += `<p>${articleTitle}</p>`;
         searchResult += `</article>`;
 
-        //Add story element to document
+        //Append story element
         $( '#searchResults' ).append( searchResult ); 
-        resultCounter++;
+
       });
 
       //Position footer to follow main content
@@ -82,14 +72,14 @@ $(document).ready( () => {
       let loadedImgNum = 0;
       images.on('load', function(){
         loadedImgNum += 1;
-        if (loadedImgNum === images.length) {
+        if ( loadedImgNum === images.length ) {
+          $( '.loading-animation' ).hide();  //Hide loading GIF
           let articles = $('.story-grid article');
           for( let index = 0; index <= (articles.length)-1; index++ ) {
             setTimeout(() => { articles[ index ].classList.remove("results-loading"); }, (index+1)*100);
           }
         }
       });
-      $( '.loading-animation' ).hide();  //Hide loading GIF
     })
     .fail(function() {
       alert('Stories failed to load. Please try again');

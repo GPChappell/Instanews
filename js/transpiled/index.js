@@ -4,17 +4,17 @@ var url = 'https://api.nytimes.com/svc/topstories/v2/';
 var apiKey = '9ef02a0589784f0db09a4dd1cbaea8ab';
 var numberStories = 12; //Number of stories to display
 
-
 $(document).ready(function () {
 
   //Initialise Selectric plugin
   $('select').selectric();
 
   //Retrieve NYT top stories
+
   $('#sectionDropdown').on('change', function () {
     //When user chooses a news topic
 
-    //Update site header format when results are loaded
+    //Update page elements when articles are requested
     $('.site-header').css('height', 'auto');
     $('.site-header').addClass('results-loaded');
     $('#siteHeaderLogo').addClass('results-loaded');
@@ -24,9 +24,9 @@ $(document).ready(function () {
     $('footer').css('position', 'absolute');
     $('.loading-animation').show(); //Show loading GIF
 
-    //Build API query string based on news topic selected by user
+    //Build API query string
     var searchSelection = $('#sectionDropdown').val().toLowerCase();
-    var searchURL = url + searchSelection + '.json';
+    var searchURL = url + searchSelection + '.json'; //Read in topic selected by user
     searchURL += '?' + $.param({
       'api-key': apiKey
     });
@@ -37,23 +37,14 @@ $(document).ready(function () {
       method: 'GET'
     }).done(function (data) {
 
-      // $( '.loading-animation' ).hide();  //Hide loading GIF
-
-      //Process news stories (AJAX data)
-      var results = data.results;
-      var resultCounter = 0;
+      //Limit results to 12 articles with image
+      var results = data.results.filter(function (val) {
+        return val.multimedia[4] != undefined;
+      }) //Check article image is present
+      .slice(0, 12);
 
       //Create a html element for  news story
       $.each(results, function (key, value) {
-
-        //Only display specified number of stories
-        if (resultCounter === numberStories) {
-          return false;
-        }
-        //Skip loading of story if image is missing
-        if (value.multimedia[4] === undefined) {
-          return true;
-        }
 
         //Read in story components from AJAX results
         var articleImage = value.multimedia[4].url,
@@ -61,7 +52,7 @@ $(document).ready(function () {
             articleURL = value.url,
             articleTitle = value.abstract;
 
-        //Build html element for story
+        //Create element for story
         var searchResult = '';
         searchResult = '<article class="story results-loading">';
         searchResult += '<a href=\'' + articleURL + '\' target=\'_blank\'>';
@@ -69,9 +60,8 @@ $(document).ready(function () {
         searchResult += '<p>' + articleTitle + '</p>';
         searchResult += '</article>';
 
-        //Add story element to document
+        //Append story element
         $('#searchResults').append(searchResult);
-        resultCounter++;
       });
 
       //Position footer to follow main content
@@ -84,6 +74,7 @@ $(document).ready(function () {
         loadedImgNum += 1;
         if (loadedImgNum === images.length) {
           (function () {
+            $('.loading-animation').hide(); //Hide loading GIF
             var articles = $('.story-grid article');
 
             var _loop = function _loop(index) {
@@ -98,7 +89,6 @@ $(document).ready(function () {
           })();
         }
       });
-      $('.loading-animation').hide(); //Hide loading GIF
     }).fail(function () {
       alert('Stories failed to load. Please try again');
     });
