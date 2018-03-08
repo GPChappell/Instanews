@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var url = 'https://api.nytimes.com/svc/topstories/v2/';
 var apiKey = '9ef02a0589784f0db09a4dd1cbaea8ab';
@@ -23,7 +23,6 @@ $(document).ready(function () {
     $('.story').remove(); //Remove existing search results
     $('footer').css('position', 'absolute');
     $('.loading-animation').show(); //Show loading GIF
-    $('.story-grid').toggleClass('results-loading');
 
     //Build API query string based on news topic selected by user
     var searchSelection = $('#sectionDropdown').val().toLowerCase();
@@ -64,7 +63,7 @@ $(document).ready(function () {
 
         //Build html element for story
         var searchResult = '';
-        searchResult = '<article class="story">';
+        searchResult = '<article class="story results-loading">';
         searchResult += '<a href=\'' + articleURL + '\' target=\'_blank\'>';
         searchResult += '<img src=\'' + articleImage + '\' alt=\'' + imageCaption + '\'/>';
         searchResult += '<p>' + articleTitle + '</p>';
@@ -72,7 +71,6 @@ $(document).ready(function () {
 
         //Add story element to document
         $('#searchResults').append(searchResult);
-
         resultCounter++;
       });
 
@@ -80,18 +78,29 @@ $(document).ready(function () {
       $('footer').css('position', 'static');
 
       // Reveal stories once images are fully loaded
-      var images = $(".story-grid img");
+      var images = $('.story-grid img');
       var loadedImgNum = 0;
       images.on('load', function () {
         loadedImgNum += 1;
-        if (loadedImgNum == images.length) {
-          $('.story-grid').toggleClass('results-loading');
+        if (loadedImgNum === images.length) {
+          (function () {
+            var articles = $('.story-grid article');
+
+            var _loop = function _loop(index) {
+              setTimeout(function () {
+                articles[index].classList.remove("results-loading");
+              }, (index + 1) * 100);
+            };
+
+            for (var index = 0; index <= articles.length - 1; index++) {
+              _loop(index);
+            }
+          })();
         }
       });
       $('.loading-animation').hide(); //Hide loading GIF
     }).fail(function () {
       alert('Stories failed to load. Please try again');
-      $('.story-grid').toggleClass('results-loading');
     });
   });
 });

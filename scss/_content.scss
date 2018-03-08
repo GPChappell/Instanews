@@ -7,10 +7,10 @@
     flex-direction: row;
     flex-wrap: wrap;
   }
-  &.results-loading {
-    transform: translateY(100px);
-    opacity: 0;
-  }
+  // &.results-loading {
+  //   transform: translateY(100px);
+  //   opacity: 0;
+  // }
 }
 
 .loading-animation {
@@ -28,7 +28,7 @@
   height: 420px;
   background-color: white;
   overflow: hidden;
-  // transition: 1s;
+  transition: 1s;
 
   @include large-mobile {
     flex-basis: 50%;
@@ -58,7 +58,7 @@
     position: absolute;
     top: 100%;
     width: 100%;
-    height: 40%;
+    height: 50%;
     padding: 0.5rem;
     background: rgba(0, 0, 0, 0.75);
     color: white;
@@ -67,13 +67,14 @@
     opacity: 0;
   }
 
+
   &:hover p {
     opacity: 1;
-    top: 60%;
+    top: 50%;
   }
 
-  // &.results-loading {
-  //   transform: translateY(200px);
-  //   opacity: 0;
-  // }
+  &.results-loading {
+    transform: translateY(200px);
+    opacity: 0;
+  }
 }
