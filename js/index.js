@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 const url = 'https://api.nytimes.com/svc/topstories/v2/';
 const apiKey = '9ef02a0589784f0db09a4dd1cbaea8ab';
@@ -20,7 +20,9 @@ $(document).ready( () => {
     $( '.search-form' ).addClass( 'results-loaded' );
 
     $( '.story' ).remove(); //Remove existing search results
-    $( '.story-grid__loading-animation' ).show(); //Show loading GIF
+    $( 'footer' ).css( 'position', 'absolute' );
+    $( '.loading-animation' ).show(); //Show loading GIF
+    $( '.story-grid').toggleClass( 'results-loading' );
 
     //Build API query string based on news topic selected by user
     let searchSelection = $('#sectionDropdown').val().toLowerCase();
@@ -28,7 +30,7 @@ $(document).ready( () => {
     searchURL += '?' + $.param({
       'api-key': apiKey
     });
-    
+
     //AJAX call to New York Times API
     $.ajax({
       url: searchURL,
@@ -36,12 +38,12 @@ $(document).ready( () => {
     })
     .done( ( data ) => {
 
-      $( '.story-grid__loading-animation' ).hide();  //Hide loading GIF
+      // $( '.loading-animation' ).hide();  //Hide loading GIF
       
       //Process news stories (AJAX data)
       let results = data.results;
       let resultCounter = 0;
-      
+
       //Create a html element for  news story
       $.each(results, ( key, value ) => {
         
@@ -76,9 +78,22 @@ $(document).ready( () => {
 
       //Position footer to follow main content
       $( 'footer' ).css( 'position', 'static' ); 
+
+      // Reveal stories once images are fully loaded
+      var images = $(".story-grid img");
+      var loadedImgNum = 0;
+      images.on('load', function(){
+        loadedImgNum += 1;
+        if (loadedImgNum == images.length) {
+          $( '.story-grid').toggleClass( 'results-loading' );
+        }
+      });
+      $( '.loading-animation' ).hide();  //Hide loading GIF
+
     })
     .fail(function() {
       alert('Stories failed to load. Please try again');
+      $( '.story-grid').toggleClass( 'results-loading' );
     });
-   });
+  });
 });

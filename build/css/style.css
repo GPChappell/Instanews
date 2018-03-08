@@ -111,9 +111,6 @@ img {
 a {
   text-decoration: none; }
 
-.page-heading {
-  display: none; }
-
 .site-header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -203,15 +200,20 @@ a {
               flex-direction: row;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap; } }
-  .story-grid__loading-animation {
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-    height: 50px;
-    width: 50px; }
+  .story-grid.results-loading {
+    -webkit-transform: translateY(100px);
+            transform: translateY(100px);
+    opacity: 0; }
+
+.loading-animation {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  height: 50px;
+  width: 50px; }
 
 .story {
   -ms-flex-preferred-size: 100%;
@@ -293,6 +295,15 @@ footer {
     font-size: 0.9rem; }
   footer p span {
     text-transform: uppercase; }
+
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px); }
 
 /*======================================
   Selectric

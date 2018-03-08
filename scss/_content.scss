@@ -7,16 +7,20 @@
     flex-direction: row;
     flex-wrap: wrap;
   }
-
-  &__loading-animation {
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate( -50%, -50% );
-    height: 50px;
-    width: 50px;
+  &.results-loading {
+    transform: translateY(100px);
+    opacity: 0;
   }
+}
+
+.loading-animation {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate( -50%, -50% );
+  height: 50px;
+  width: 50px;
 }
 
 .story {
@@ -24,6 +28,7 @@
   height: 420px;
   background-color: white;
   overflow: hidden;
+  // transition: 1s;
 
   @include large-mobile {
     flex-basis: 50%;
@@ -66,4 +71,9 @@
     opacity: 1;
     top: 60%;
   }
+
+  // &.results-loading {
+  //   transform: translateY(200px);
+  //   opacity: 0;
+  // }
 }
